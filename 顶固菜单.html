@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>顶固菜单</title>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<style>
+		*{margin: 0;padding: 0;}
+		body{font-size: 12px;}
+		ul{list-style: none;}
+		.top{
+			width: 960px;
+			height: 200px;
+			background-color: cyan;
+			margin: 0 auto;
+			position: relative;
+		}
+		.menu{
+			height: 30px;
+			width: 960px;
+			background-color: yellow;
+			margin: 0 auto;
+		}
+		.menu span{
+			width: 100%;
+			height: 100%;
+			display: block;
+			text-align: center;
+			line-height: 30px;
+			font-size: 20px;
+		}
+		.menu_pos{
+			height: 30px;
+			/* background-color: red; */
+			display: none;
+		}
+		ul li{
+			width: 960px;
+			height: 300px;
+			margin: 0 auto;
+			text-align: center;
+			line-height: 300px;
+			background-color: #ccc;
+		}
+		.toTop{
+			position: fixed;
+			bottom: 10px;
+			right: 10px;
+			cursor: pointer;
+			border: 1px solid #ccc;
+			padding: 5px;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$menu = $('.menu')
+			$menu_pos = $('.menu_pos')
+			$toTop = $('.toTop')
+			$(window).scroll(function(event) {
+				$top = $(document).scrollTop();
+
+				if ($top>400){
+					$toTop.fadeIn();
+				}
+				else{
+					$toTop.fadeOut();
+				}
+				
+
+				if ($top>200){
+					$menu.css({
+						"position":"fixed",
+						'left':'50%',
+						'top':0,
+						'marginLeft':-480
+
+					});
+					$menu_pos.show()
+				}else{
+					$menu.css({
+						'position':'static',
+						'marginLeft':'auto'
+					})
+					$menu_pos.hide()
+				};
+				
+			});
+			$toTop.click(function(){
+					$('html,body').animate({'scrollTop':0})
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="top"></div>
+	<div class="menu"><span>顶部菜单</span></div>
+	<div class="menu_pos"></div>
+	<ul>
+		<li>主题内容1</li>
+		<li>主题内容2</li>
+		<li>主题内容3</li>
+		<li>主题内容4</li>
+		<li>主题内容5</li>
+	</ul>
+	<div class="toTop">返回顶部</div>
+</body>
+</html>

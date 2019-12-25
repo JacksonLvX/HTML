@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>节点操作</title>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//通过html的字符串的方式添加节点性能最高
+			// $('#div1').html('')
+			// $('#div1').html('<a href="#">链接</a>')
+			// 如果用上面的方式添加节点，a标签会覆盖掉原来的标签
+			// 要通过下面的节点操作进行添加标签操作
+			$a = $('<a href="#">链接</a>')
+			// 向#div1中添加节点
+			// $('#div1').append($a)
+			// $($a).appendTo('#div1')
+			// $('#div1').prepend($a)
+			// $($a).prependTo('#div1')
+			$('#div1').after($a)
+
+			// $($a).appendTo('#div1') 跟append相同的作用
+			// append appendTo 子元素放到父元素内部的后面
+			// prepend prependTo 子元素放到父元素内部的前面
+			// after insertAfter 放到元素外部后面
+			// before insertBefore 放到元素外部前面
+			
+		})
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<span>原有标签</span>
+	</div>
+</body>
+</html>
