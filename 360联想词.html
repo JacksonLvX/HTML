@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>360联想词</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			
+			$('#inputtxt').keyup(function(){
+
+				var $val = $(this).val()
+				// alert($val)
+				
+				$('ul').empty()
+
+				$.ajax({
+					url:'https://sug.so.360.cn/suggest',
+					type:'get',
+					dataType:'jsonp',
+					// jsonCallback:'fnback',
+					data:{'word':$val,
+						encodein:'utf-8',
+						encodeout:'utf-8'
+					}
+				})
+				.done(function(data){
+					// console.log(data)
+					var $dat = data.s;
+
+					for(var i=0;i<$dat.length;i++){
+						var $newli = $('<li>')
+						$newli.html($dat[i])
+						$newli.appendTo($('#list'))
+					}
+				})
+				.fail(function(){
+					alert('服务器超时！')
+				})
+			})
+
+			
+		})
+	</script>
+</head>
+<body>
+	<!-- https://sug.so.360.cn/suggest?callback=suggest_so&encodein=utf-8&encodeout=utf-8&format=json&fields=word&word=s&llbq=A5%2CB5%2CC5%2CD5 -->
+	<input type="text" id="inputtxt">
+	<ul id="list">
+		
+	</ul>
+</body>
+</html>
