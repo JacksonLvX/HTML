@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie test</title>
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript">
+		$.cookie('mycookie','123',{expires:7,path:'/'});
+		var mycookie = $.cookie('mycookie');
+		alert(mycookie);
+		localStorage.setItem('dat','456');
+		sessionStorage.setItem('dat','456');
+	</script>
+</head>
+<body>
+	<h1>cookie测试</h1>
+</body>
+</html>

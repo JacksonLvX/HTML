@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽练习</title>
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<style type="text/css">
+		.con{
+			position: relative;
+			width: 800px;
+			height: 200px;
+			border: 1px solid grey;
+			/* margin: 100px 100px; */
+			/* display: inline-block; */
+		}
+
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: gold;
+		}
+		.showNum{
+			/* display: inline-block; */
+			width: 200px;
+			height: 200px;
+			border: 1px solid grey;
+		}
+		.process{
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 200px;
+			width: 0px;
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$('.box').draggable({
+				axis:'x',
+				containment:'parent',
+				opacity:0.6,
+				drag:function(ev,ui){
+					// console.log(ui);
+					var num = ui.position.left
+					
+					$('.process').css({width:num})
+					$('.showNum').val(parseInt(100*num/600));
+
+				}
+			});
+		})
+	</script>
+</head>
+<body>
+	<div class="con">
+		<div class="box"></div>	
+		<div class="process"></div>
+	</div>
+	<input type="text" class="showNum">
+</body>
+</html>
